@@ -26,6 +26,7 @@
 		0DF581912C4C7238000C65BF /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF581902C4C7238000C65BF /* NetworkService.swift */; };
 		0DF581942C4C745F000C65BF /* MoviesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF581932C4C745F000C65BF /* MoviesAPI.swift */; };
 		0DF581962C4C7486000C65BF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF581952C4C7486000C65BF /* Constants.swift */; };
+		0DF581982C4C77FC000C65BF /* MoviesRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF581972C4C77FC000C65BF /* MoviesRemoteDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		0DF581902C4C7238000C65BF /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		0DF581932C4C745F000C65BF /* MoviesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesAPI.swift; sourceTree = "<group>"; };
 		0DF581952C4C7486000C65BF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		0DF581972C4C77FC000C65BF /* MoviesRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesRemoteDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +244,7 @@
 		0DF5817B2C4C654C000C65BF /* Data Sources */ = {
 			isa = PBXGroup;
 			children = (
+				0DF581972C4C77FC000C65BF /* MoviesRemoteDataSource.swift */,
 			);
 			path = "Data Sources";
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DF581912C4C7238000C65BF /* NetworkService.swift in Sources */,
+				0DF581982C4C77FC000C65BF /* MoviesRemoteDataSource.swift in Sources */,
 				0DF581452C4C25DE000C65BF /* ViewController.swift in Sources */,
 				0DF5818B2C4C7103000C65BF /* NetworkError.swift in Sources */,
 				0DF581412C4C25DE000C65BF /* AppDelegate.swift in Sources */,

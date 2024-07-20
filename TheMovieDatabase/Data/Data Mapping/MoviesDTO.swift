@@ -57,3 +57,17 @@ enum OriginalLanguage: String, Codable {
     case fr = "fr"
     case zh = "zh"
 }
+
+extension MovieDTO {
+    func toDomain() -> Movie {
+        return .init(adult: self.adult, backdropPath: self.backdropPath, genreIDS: self.genreIDS, id: self.id, originalLanguage: self.originalLanguage, originalTitle: self.originalTitle, overview: self.overview, popularity: self.popularity, posterPath: self.posterPath, releaseDate: self.releaseDate, title: self.title, video: self.video, voteAverage: self.voteAverage, voteCount: self.voteCount)
+    }
+}
+extension MovieListPageDTO {
+    func toDomain() -> MovieListPage {
+        return .init(movieList: self.movieList?.map{$0.toDomain()},
+                     totalPages: self.totalPages,
+                     totalResults: self.totalResults,
+                     page: self.page)
+    }
+}
