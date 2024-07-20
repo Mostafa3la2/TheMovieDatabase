@@ -24,6 +24,8 @@
 		0DF5818D2C4C71C1000C65BF /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF5818C2C4C71C1000C65BF /* HTTPMethod.swift */; };
 		0DF5818F2C4C71E6000C65BF /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF5818E2C4C71E6000C65BF /* Endpoint.swift */; };
 		0DF581912C4C7238000C65BF /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF581902C4C7238000C65BF /* NetworkService.swift */; };
+		0DF581942C4C745F000C65BF /* MoviesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF581932C4C745F000C65BF /* MoviesAPI.swift */; };
+		0DF581962C4C7486000C65BF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF581952C4C7486000C65BF /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		0DF5818C2C4C71C1000C65BF /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		0DF5818E2C4C71E6000C65BF /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		0DF581902C4C7238000C65BF /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		0DF581932C4C745F000C65BF /* MoviesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesAPI.swift; sourceTree = "<group>"; };
+		0DF581952C4C7486000C65BF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +164,7 @@
 		0DF581712C4C4F26000C65BF /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				0DF581922C4C7454000C65BF /* APIs */,
 				0DF5817C2C4C6552000C65BF /* Repos */,
 				0DF5817B2C4C654C000C65BF /* Data Sources */,
 				0DF5817A2C4C6547000C65BF /* Data Mapping */,
@@ -205,6 +210,7 @@
 		0DF581762C4C4F6E000C65BF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0DF581952C4C7486000C65BF /* Constants.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -285,6 +291,14 @@
 				0DF581902C4C7238000C65BF /* NetworkService.swift */,
 			);
 			path = "Network Layer";
+			sourceTree = "<group>";
+		};
+		0DF581922C4C7454000C65BF /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+				0DF581932C4C745F000C65BF /* MoviesAPI.swift */,
+			);
+			path = APIs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -425,10 +439,12 @@
 				0DF581862C4C6B1F000C65BF /* MoviesDTO.swift in Sources */,
 				0DF5818F2C4C71E6000C65BF /* Endpoint.swift in Sources */,
 				0DF581432C4C25DE000C65BF /* SceneDelegate.swift in Sources */,
+				0DF581962C4C7486000C65BF /* Constants.swift in Sources */,
 				0DF5818D2C4C71C1000C65BF /* HTTPMethod.swift in Sources */,
 				0DF581822C4C666C000C65BF /* FetchPopularMoviesUseCase.swift in Sources */,
 				0DF581842C4C6ADA000C65BF /* Movie.swift in Sources */,
 				0DF581882C4C6E74000C65BF /* MoviesRepo.swift in Sources */,
+				0DF581942C4C745F000C65BF /* MoviesAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

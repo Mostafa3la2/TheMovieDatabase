@@ -19,7 +19,10 @@ class NetworkService {
 
         var request = URLRequest(url: url)
         request.httpMethod = endpoint.method.rawValue
-
+        request.allHTTPHeaderFields = [
+          "accept": "application/json",
+          "Authorization": "Bearer \(APIConstants.accessToken)"
+        ]
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
 
