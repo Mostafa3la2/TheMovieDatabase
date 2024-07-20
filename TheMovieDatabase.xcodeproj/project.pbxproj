@@ -19,6 +19,7 @@
 		0DF581822C4C666C000C65BF /* FetchPopularMoviesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF581812C4C666C000C65BF /* FetchPopularMoviesUseCase.swift */; };
 		0DF581842C4C6ADA000C65BF /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF581832C4C6ADA000C65BF /* Movie.swift */; };
 		0DF581862C4C6B1F000C65BF /* MoviesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF581852C4C6B1F000C65BF /* MoviesDTO.swift */; };
+		0DF581882C4C6E74000C65BF /* MoviesRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF581872C4C6E74000C65BF /* MoviesRepo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		0DF581812C4C666C000C65BF /* FetchPopularMoviesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPopularMoviesUseCase.swift; sourceTree = "<group>"; };
 		0DF581832C4C6ADA000C65BF /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		0DF581852C4C6B1F000C65BF /* MoviesDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesDTO.swift; sourceTree = "<group>"; };
+		0DF581872C4C6E74000C65BF /* MoviesRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesRepo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,7 +162,6 @@
 		0DF581722C4C4F2B000C65BF /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				0DF581792C4C6537000C65BF /* Repo Interfaces */,
 				0DF581782C4C6528000C65BF /* Use Cases */,
 				0DF581772C4C6523000C65BF /* Entities */,
 			);
@@ -215,13 +216,6 @@
 			path = "Use Cases";
 			sourceTree = "<group>";
 		};
-		0DF581792C4C6537000C65BF /* Repo Interfaces */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Repo Interfaces";
-			sourceTree = "<group>";
-		};
 		0DF5817A2C4C6547000C65BF /* Data Mapping */ = {
 			isa = PBXGroup;
 			children = (
@@ -240,6 +234,7 @@
 		0DF5817C2C4C6552000C65BF /* Repos */ = {
 			isa = PBXGroup;
 			children = (
+				0DF581872C4C6E74000C65BF /* MoviesRepo.swift */,
 			);
 			path = Repos;
 			sourceTree = "<group>";
@@ -409,6 +404,7 @@
 				0DF581432C4C25DE000C65BF /* SceneDelegate.swift in Sources */,
 				0DF581822C4C666C000C65BF /* FetchPopularMoviesUseCase.swift in Sources */,
 				0DF581842C4C6ADA000C65BF /* Movie.swift in Sources */,
+				0DF581882C4C6E74000C65BF /* MoviesRepo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
