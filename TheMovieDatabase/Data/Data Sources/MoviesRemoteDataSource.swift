@@ -8,7 +8,7 @@
 import Foundation
 
 protocol MoviesRemoteDataSource {
-    func fetchPopularMovies() async throws -> MovieListPage
+    func fetchPopularMovies(parameters: [String: String]) async throws -> MovieListPage
 }
 
 class DefaultRemoteDataSource: MoviesRemoteDataSource {
@@ -18,7 +18,7 @@ class DefaultRemoteDataSource: MoviesRemoteDataSource {
     init(moviesAPI: MoviesAPI) {
         self.moviesAPI = moviesAPI
     }
-    func fetchPopularMovies() async throws -> MovieListPage {
-        return try await moviesAPI.fetchPopularMovies().toDomain()
+    func fetchPopularMovies(parameters: [String: String]) async throws -> MovieListPage {
+        return try await moviesAPI.fetchPopularMovies(parameters: parameters).toDomain()
     }
 }

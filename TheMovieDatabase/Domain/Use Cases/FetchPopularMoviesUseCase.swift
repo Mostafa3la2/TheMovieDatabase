@@ -20,6 +20,6 @@ class DefaultFetchPopularMoviesUseCase: FetchPopularMoviesUseCase {
     }
 
     func execute(parameters: [String : String]) async throws -> MovieListPage {
-        return try await moviesRepo.fetchPopularMovies()
+        return try await moviesRepo.fetchPopularMovies(parameters: parameters)
     }
 }

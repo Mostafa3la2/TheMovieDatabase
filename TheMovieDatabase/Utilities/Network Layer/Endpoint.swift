@@ -9,7 +9,7 @@ import Foundation
 
 struct Endpoint {
     let path: String
-    let queryItems: [URLQueryItem]?
+    var queryItems: [URLQueryItem]?
     let method: HTTPMethod
 
     init(path: String, queryItems: [URLQueryItem]? = nil, method: HTTPMethod = .GET) {

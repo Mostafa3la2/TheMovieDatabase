@@ -17,6 +17,8 @@ class PopularMoviesListViewController: UIViewController {
     var moviesDataSource: UICollectionViewDiffableDataSource<Section, MoviePresentationModel>!
     var moviesViewModel: PopularMoviesListViewModel!
     private var cancellables = Set<AnyCancellable>()
+    private let loadingIndicator = UIActivityIndicatorView(style: .medium)
+    private let refreshIndicator = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +42,9 @@ class PopularMoviesListViewController: UIViewController {
         moviesCollectionView.backgroundColor = .white
         view.addSubview(moviesCollectionView)
         moviesCollectionView.anchor(top: self.view.topAnchor, left: self.view.leftAnchor, bottom: self.view.bottomAnchor, right: self.view.rightAnchor)
+        refreshIndicator.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
+        moviesCollectionView.refreshControl = refreshIndicator
+        moviesCollectionView.delegate = self
     }
     private func createLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
@@ -80,9 +85,39 @@ class PopularMoviesListViewController: UIViewController {
         moviesViewModel.$movies
             .receive(on: DispatchQueue.main)
             .sink { [weak self] movies in
+                if self?.refreshIndicator.isRefreshing == true {
+                    self?.refreshIndicator.endRefreshing()
+                }
                 self?.applySnapshot(movies: movies)
             }
             .store(in: &cancellables)
+        moviesViewModel?.$isFetching
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isLoading in
+                if isLoading {
+                    self?.loadingIndicator.startAnimating()
+                } else {
+                    self?.loadingIndicator.stopAnimating()
+                }
+            }
+            .store(in: &cancellables)
     }
-    
+    @objc func pullToRefresh() {
+        Task {
+            await moviesViewModel?.fetchPopularMovies(resetPage: true)
+        }
+    }
+}
+extension PopularMoviesListViewController: UICollectionViewDelegate {
+    // MARK: Pagination Logic
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        if offsetY > contentHeight - scrollView.frame.height && moviesViewModel.isFetching == false {
+            Task {
+                await moviesViewModel?.fetchNextPage()
+                print("called")
+            }
+        }
+    }
 }

@@ -9,8 +9,9 @@ import Foundation
 
 class MoviesAPI {
 
-    func fetchPopularMovies() async throws -> MovieListPageDTO {
-        let endpoint = Endpoint(path: "/3/movie/popular")
+    func fetchPopularMovies(parameters: [String: String]) async throws -> MovieListPageDTO {
+        var endpoint = Endpoint(path: "/3/movie/popular")
+        endpoint.queryItems = parameters.map { URLQueryItem(name: $0.key, value: $0.value)}
         let response: MovieListPageDTO = try await NetworkService.shared.request(endpoint: endpoint, responseType: MovieListPageDTO.self)
         return response
     }
