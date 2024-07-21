@@ -19,9 +19,12 @@ class PopularMoviesListViewController: UIViewController {
     private var cancellables = Set<AnyCancellable>()
     private let loadingIndicator = UIActivityIndicatorView(style: .medium)
     private let refreshIndicator = UIRefreshControl()
+    private let searchBar = UISearchBar()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
+        setupSearchBar()
         setupMoviesCollectionView()
         setupDataSource()
         setupViewModel()
@@ -32,7 +35,12 @@ class PopularMoviesListViewController: UIViewController {
         self.title = "Popular Movies"
         // Do any additional setup after loading the view.
     }
-    
+    private func setupSearchBar() {
+        searchBar.placeholder = "Search Movies"
+        // searchBar.delegate = self
+        view.addSubview(searchBar)
+        searchBar.anchor(top: self.view.safeAreaLayoutGuide.topAnchor, left: self.view.leftAnchor, right: self.view.rightAnchor)
+    }
     private func setupMoviesCollectionView() {
         let layout = UICollectionViewCompositionalLayout{ (sectionIndex, layoutEnv) -> NSCollectionLayoutSection? in
             return self.createLayout()
@@ -41,7 +49,7 @@ class PopularMoviesListViewController: UIViewController {
         moviesCollectionView.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: MovieCollectionViewCell.reuseIdentified)
         moviesCollectionView.backgroundColor = .white
         view.addSubview(moviesCollectionView)
-        moviesCollectionView.anchor(top: self.view.topAnchor, left: self.view.leftAnchor, bottom: self.view.bottomAnchor, right: self.view.rightAnchor)
+        moviesCollectionView.anchor(top: searchBar.bottomAnchor, left: self.view.leftAnchor, bottom: self.view.bottomAnchor, right: self.view.rightAnchor)
         refreshIndicator.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
         moviesCollectionView.refreshControl = refreshIndicator
         moviesCollectionView.delegate = self
