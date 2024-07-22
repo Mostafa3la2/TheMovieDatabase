@@ -17,7 +17,8 @@ class PopularMoviesListViewController: UIViewController {
     var moviesDataSource: UICollectionViewDiffableDataSource<Section, MoviePresentationModel>!
     var moviesViewModel: PopularMoviesListViewModel!
     private var cancellables = Set<AnyCancellable>()
-    private let loadingIndicator = UIActivityIndicatorView(style: .medium)
+    private var footerView: UICollectionReusableView!
+    private let pageLoader = UIActivityIndicatorView(style: .large)
     private let refreshIndicator = UIRefreshControl()
     private let searchBar = UISearchBar()
 
@@ -28,6 +29,7 @@ class PopularMoviesListViewController: UIViewController {
         setupMoviesCollectionView()
         setupDataSource()
         setupViewModel()
+        setupPageLoader()
         bindViewModel()
         Task {
             await moviesViewModel.fetchPopularMovies()
@@ -43,12 +45,19 @@ class PopularMoviesListViewController: UIViewController {
                          left: self.view.leftAnchor,
                          right: self.view.rightAnchor)
     }
+    private func setupPageLoader() {
+        view.addSubview(pageLoader)
+        pageLoader.center(inView: view)
+        pageLoader.hidesWhenStopped = true
+        pageLoader.startAnimating()
+    }
     private func setupMoviesCollectionView() {
         let layout = UICollectionViewCompositionalLayout{ (sectionIndex, layoutEnv) -> NSCollectionLayoutSection? in
             return self.createLayout()
         }
         moviesCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         moviesCollectionView.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: MovieCollectionViewCell.reuseIdentified)
+        moviesCollectionView.register(LoadingFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: LoadingFooterView.reuseIdentifier)
         moviesCollectionView.backgroundColor = .white
         view.addSubview(moviesCollectionView)
         moviesCollectionView.anchor(top: searchBar.bottomAnchor, 
@@ -65,9 +74,14 @@ class PopularMoviesListViewController: UIViewController {
 
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalWidth(0.75))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, repeatingSubitem: item, count: 2)
+
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 8
         section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
+
+        let footerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50))
+        let footer = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: footerSize, elementKind: UICollectionView.elementKindSectionFooter, alignment: .bottom)
+        section.boundarySupplementaryItems = [footer]
 
         return section
     }
@@ -78,6 +92,11 @@ class PopularMoviesListViewController: UIViewController {
             }
             cell.configure(withMovie: movie)
             return cell
+        }
+        moviesDataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
+            guard kind == UICollectionView.elementKindSectionFooter else { return UICollectionReusableView() }
+            self.footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: LoadingFooterView.reuseIdentifier, for: indexPath) as! LoadingFooterView
+            return self.footerView
         }
     }
     private func applySnapshot(movies: [MoviePresentationModel], animatingDifferences: Bool = true) {
@@ -102,6 +121,7 @@ class PopularMoviesListViewController: UIViewController {
                 if self?.refreshIndicator.isRefreshing == true {
                     self?.refreshIndicator.endRefreshing()
                 }
+                self?.pageLoader.stopAnimating()
                 self?.applySnapshot(movies: movies)
             }
             .store(in: &cancellables)
@@ -109,9 +129,9 @@ class PopularMoviesListViewController: UIViewController {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] isLoading in
                 if isLoading {
-                    self?.loadingIndicator.startAnimating()
+                    (self?.footerView as? LoadingFooterView)?.startAnimating()
                 } else {
-                    self?.loadingIndicator.stopAnimating()
+                    (self?.footerView as? LoadingFooterView)?.stopAnimating()
                 }
             }
             .store(in: &cancellables)
