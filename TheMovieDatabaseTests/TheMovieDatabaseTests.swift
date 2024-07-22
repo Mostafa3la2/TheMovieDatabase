@@ -45,7 +45,12 @@ final class TheMovieDatabaseTests: XCTestCase {
 
     func testPageState() async {
         await viewModel.searchMovies(with: "")
-        assert(viewModel.pageState == .search)
+        XCTAssert(viewModel.pageState == .search)
     }
 
+    func testImageURLConstruction() async {
+        await viewModel.fetchPopularMovies(resetPage: true)
+        let url = viewModel.movies.first!.posterPath!
+        XCTAssert(constructImageURL(path: url, withQuality: .high) == URL(string: "https://image.tmdb.org/t/p/w500/test1"))
+    }
 }
