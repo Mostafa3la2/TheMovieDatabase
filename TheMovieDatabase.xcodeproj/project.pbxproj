@@ -42,6 +42,7 @@
 		0DF581B52C4DFD6D000C65BF /* FetchMovieCastUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF581B42C4DFD6D000C65BF /* FetchMovieCastUseCase.swift */; };
 		0DF581B72C4E0164000C65BF /* CastMemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF581B62C4E0164000C65BF /* CastMemberCollectionViewCell.swift */; };
 		0DF581BD2C4E1326000C65BF /* LoadingFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF581BC2C4E1326000C65BF /* LoadingFooterView.swift */; };
+		0DF581C02C4E16DA000C65BF /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF581BF2C4E16DA000C65BF /* AppContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,7 @@
 		0DF581B42C4DFD6D000C65BF /* FetchMovieCastUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMovieCastUseCase.swift; sourceTree = "<group>"; };
 		0DF581B62C4E0164000C65BF /* CastMemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastMemberCollectionViewCell.swift; sourceTree = "<group>"; };
 		0DF581BC2C4E1326000C65BF /* LoadingFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingFooterView.swift; sourceTree = "<group>"; };
+		0DF581BF2C4E16DA000C65BF /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 			children = (
 				0DF581402C4C25DE000C65BF /* AppDelegate.swift */,
 				0DF581422C4C25DE000C65BF /* SceneDelegate.swift */,
+				0DF581BF2C4E16DA000C65BF /* AppContainer.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 				0DF5819C2C4D3E57000C65BF /* PopularMoviesListViewController.swift in Sources */,
 				0DF581BD2C4E1326000C65BF /* LoadingFooterView.swift in Sources */,
 				0DF581982C4C77FC000C65BF /* MoviesRemoteDataSource.swift in Sources */,
+				0DF581C02C4E16DA000C65BF /* AppContainer.swift in Sources */,
 				0DF581452C4C25DE000C65BF /* ViewController.swift in Sources */,
 				0DF581AF2C4DF11B000C65BF /* MovieDetailsViewModel.swift in Sources */,
 				0DF5818B2C4C7103000C65BF /* NetworkError.swift in Sources */,

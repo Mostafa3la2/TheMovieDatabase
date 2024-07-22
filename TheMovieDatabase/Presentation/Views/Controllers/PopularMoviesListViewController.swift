@@ -28,7 +28,6 @@ class PopularMoviesListViewController: UIViewController {
         setupSearchBar()
         setupMoviesCollectionView()
         setupDataSource()
-        setupViewModel()
         setupPageLoader()
         bindViewModel()
         Task {
@@ -106,13 +105,8 @@ class PopularMoviesListViewController: UIViewController {
         moviesDataSource.apply(snapshot, animatingDifferences: animatingDifferences)
     }
     // will be separated later
-    private func setupViewModel() {
-        let moviesAPI = MoviesAPI()
-        let moviesDataSource = DefaultRemoteDataSource(moviesAPI: moviesAPI)
-        let moviesRepo = DefaultMoviesRepo(remoteDataSource: moviesDataSource)
-        let moviesUsecase = DefaultFetchPopularMoviesUseCase(moviesRepo: moviesRepo)
-        let searchMoviesUsecase = DefaultSearchMoviesUseCase(moviesRepo: moviesRepo)
-        moviesViewModel = PopularMoviesListViewModel(fetchMoviesUseCase: moviesUsecase, searchMoviesUseCase: searchMoviesUsecase)
+    func injectVM(viewModel: PopularMoviesListViewModel) {
+        moviesViewModel = viewModel
     }
     private func bindViewModel() {
         moviesViewModel.$movies
