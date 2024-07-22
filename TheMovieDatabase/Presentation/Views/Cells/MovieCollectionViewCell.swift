@@ -56,7 +56,12 @@ class MovieCollectionViewCell: UICollectionViewCell {
         subtitleLabel.text = movie.voteAverage != nil ? String(format: "%.2f", movie.voteAverage!) : "NA"
         if let averageRating = movie.voteAverage {
             if (0..<6).contains(averageRating) {
-                subtitleLabel.textColor = .red
+                if averageRating == 0 {
+                    subtitleLabel.textColor = .black
+                    subtitleLabel.text = "NA"
+                } else {
+                    subtitleLabel.textColor = .red
+                }
             }
             else if (6..<7.5).contains(averageRating) {
                 subtitleLabel.textColor = .orange
