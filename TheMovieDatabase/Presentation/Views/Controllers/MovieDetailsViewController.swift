@@ -57,7 +57,7 @@ class MovieDetailsViewController: UIViewController {
     }
     private func configurePosterImageView() {
         contentView.addSubview(posterImageView)
-        posterImageView.contentMode = .scaleAspectFill
+        posterImageView.contentMode = .scaleAspectFit
         posterImageView.clipsToBounds = true
         posterImageView.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, height: 300)
     }
@@ -116,7 +116,8 @@ class MovieDetailsViewController: UIViewController {
 
             let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-
+            group.interItemSpacing = .fixed(20)
+            
             let section = NSCollectionLayoutSection(group: group)
             section.interGroupSpacing = 8
             section.orthogonalScrollingBehavior = .continuous

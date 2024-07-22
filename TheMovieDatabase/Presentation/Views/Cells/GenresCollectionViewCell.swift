@@ -19,7 +19,7 @@ class GenresCollectionViewCell: UICollectionViewCell {
         label.centerX(inView: contentView)
         label.centerY(inView: contentView)
         contentView.layer.borderWidth = 1
-        contentView.layer.cornerRadius = 4
+        contentView.layer.cornerRadius = 16
         contentView.layer.borderColor = UIColor.black.cgColor
     }
 
