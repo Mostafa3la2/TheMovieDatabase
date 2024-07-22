@@ -11,6 +11,7 @@ import Foundation
 class PopularMoviesListViewModel {
 
     @Published private(set) var movies: [MoviePresentationModel] = []
+    @Published var error: Error?
     private var moviesPage: MovieListPage?
     private let fetchMoviesUseCase: FetchPopularMoviesUseCase
     private let searchMoviesUseCase: SearchMoviesUseCase
@@ -50,6 +51,9 @@ class PopularMoviesListViewModel {
         } catch {
             print("error fetching movies: \(error)")
             isFetching = false
+            DispatchQueue.main.async {
+                self.error = error
+            }
         }
     }
 
@@ -79,6 +83,9 @@ class PopularMoviesListViewModel {
         } catch {
             print("error fetching movies: \(error)")
             isFetching = false
+            DispatchQueue.main.async {
+                self.error = error
+            }
         }
     }
     func fetchNextPage() async{

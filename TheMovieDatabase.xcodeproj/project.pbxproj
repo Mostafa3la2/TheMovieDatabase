@@ -45,6 +45,7 @@
 		0DF581C02C4E16DA000C65BF /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF581BF2C4E16DA000C65BF /* AppContainer.swift */; };
 		0DF581C42C4E1908000C65BF /* MockMoviesRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF581C32C4E1908000C65BF /* MockMoviesRepo.swift */; };
 		0DF581C62C4E1AA9000C65BF /* TestDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF581C52C4E1AA9000C65BF /* TestDIContainer.swift */; };
+		0DF581CB2C4E245D000C65BF /* ErrorPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF581CA2C4E245D000C65BF /* ErrorPopupView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		0DF581BF2C4E16DA000C65BF /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 		0DF581C32C4E1908000C65BF /* MockMoviesRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMoviesRepo.swift; sourceTree = "<group>"; };
 		0DF581C52C4E1AA9000C65BF /* TestDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDIContainer.swift; sourceTree = "<group>"; };
+		0DF581CA2C4E245D000C65BF /* ErrorPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorPopupView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,6 +245,7 @@
 		0DF581752C4C4F42000C65BF /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				0DF581C72C4E23F9000C65BF /* Views */,
 				0DF581892C4C6ED9000C65BF /* Network Layer */,
 				0DF5819F2C4D44E7000C65BF /* Extensions.swift */,
 			);
@@ -395,6 +398,14 @@
 				0DF581C32C4E1908000C65BF /* MockMoviesRepo.swift */,
 			);
 			path = "Mock Repo";
+			sourceTree = "<group>";
+		};
+		0DF581C72C4E23F9000C65BF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0DF581CA2C4E245D000C65BF /* ErrorPopupView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -550,6 +561,7 @@
 				0DF581B52C4DFD6D000C65BF /* FetchMovieCastUseCase.swift in Sources */,
 				0DF581412C4C25DE000C65BF /* AppDelegate.swift in Sources */,
 				0DF581862C4C6B1F000C65BF /* MoviesDTO.swift in Sources */,
+				0DF581CB2C4E245D000C65BF /* ErrorPopupView.swift in Sources */,
 				0DF581AB2C4DE439000C65BF /* SearchMoviesUseCase.swift in Sources */,
 				0DF5818F2C4C71E6000C65BF /* Endpoint.swift in Sources */,
 				0DF581432C4C25DE000C65BF /* SceneDelegate.swift in Sources */,

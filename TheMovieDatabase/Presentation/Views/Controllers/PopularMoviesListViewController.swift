@@ -138,6 +138,13 @@ class PopularMoviesListViewController: UIViewController {
                 }
             }
             .store(in: &cancellables)
+        moviesViewModel.$error
+            .compactMap { $0 }
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] error in
+                self?.showErrorPopup(message: error.localizedDescription)
+            }
+            .store(in: &cancellables)
     }
     @objc func pullToRefresh() {
         Task {

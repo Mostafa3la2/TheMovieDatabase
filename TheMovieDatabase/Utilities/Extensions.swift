@@ -95,3 +95,21 @@ extension UIView {
                bottom: view.bottomAnchor, right: view.rightAnchor)
     }
 }
+extension UIViewController {
+    private static var currentPopup: ErrorPopupView?
+
+    func showErrorPopup(message: String) {
+        UIViewController.currentPopup?.dismiss()
+
+        let errorPopup = ErrorPopupView()
+        errorPopup.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(errorPopup)
+        NSLayoutConstraint.activate([
+            errorPopup.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            errorPopup.widthAnchor.constraint(equalToConstant: 300),
+            errorPopup.heightAnchor.constraint(equalToConstant: 100)
+        ])
+
+        errorPopup.showMessage(message, in: self.view)
+    }
+}

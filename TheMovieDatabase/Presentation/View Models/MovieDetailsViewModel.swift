@@ -11,6 +11,7 @@ import Combine
 @MainActor
 class MovieDetailsViewModel: ObservableObject {
     
+    @Published var error: Error?
     @Published private(set) var movieDetails: MovieDetails?
     @Published private(set) var movieCast: [MovieCast]?
 
@@ -38,6 +39,9 @@ class MovieDetailsViewModel: ObservableObject {
             self.movieCast = cast
         } catch {
             print("Error fetching movie details: \(error)")
+            DispatchQueue.main.async {
+                self.error = error
+            }
         }
     }
 }

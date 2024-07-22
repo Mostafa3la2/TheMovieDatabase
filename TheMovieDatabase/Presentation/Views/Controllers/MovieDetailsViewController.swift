@@ -186,6 +186,13 @@ class MovieDetailsViewController: UIViewController {
                 self?.updateCast(with: cast)
             }
             .store(in: &cancellables)
+        viewModel.$error
+            .compactMap { $0 }
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] error in
+                self?.showErrorPopup(message: error.localizedDescription)
+            }
+            .store(in: &cancellables)
     }
     private func updateUI(with details: MovieDetails) {
         if let url = constructImageURL(path: details.posterURL ?? "", withQuality: .high) {
