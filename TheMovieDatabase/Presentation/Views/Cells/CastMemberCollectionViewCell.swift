@@ -20,15 +20,23 @@ class CastMemberCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(nameLabel)
         contentView.addSubview(characterLabel)
 
-        imageView.anchor(top: contentView.topAnchor, width: 100, height: 100)
+        imageView.anchor(top: contentView.topAnchor, 
+                         width: 100,
+                         height: 100)
         imageView.centerX(inView: contentView)
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 4
         imageView.clipsToBounds = true
 
-        nameLabel.anchor(top: imageView.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 8)
+        nameLabel.anchor(top: imageView.bottomAnchor, 
+                         left: contentView.leftAnchor,
+                         right: contentView.rightAnchor,
+                         paddingTop: 8)
 
-        characterLabel.anchor(top: nameLabel.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 4)
+        characterLabel.anchor(top: nameLabel.bottomAnchor, 
+                              left: contentView.leftAnchor,
+                              right: contentView.rightAnchor,
+                              paddingTop: 4)
     }
 
     required init?(coder: NSCoder) {
@@ -36,7 +44,7 @@ class CastMemberCollectionViewCell: UICollectionViewCell {
     }
 
     func configure(with castMember: CastMember) {
-        if let url = URL(string: "https://image.tmdb.org/t/p/w300/"+(castMember.profileURL ?? "")) {
+        if let url = constructImageURL(path: castMember.profileURL ?? "", withQuality: .medium) {
             imageView.kf.setImage(with: url)
         }
         nameLabel.text = castMember.name

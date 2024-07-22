@@ -7,7 +7,23 @@
 
 import Foundation
 
-func loadImage(path: String) {
-    let baseURL = "https://image.tmdb.org/t/p/w500/"
+enum ImageQuality {
+    case medium
+    case high
+    case original
+}
+
+func constructImageURL(path: String, withQuality: ImageQuality) -> URL? {
+    var quality = ""
+    switch withQuality {
+    case .medium:
+        quality = "w300"
+    case .high:
+        quality = "w500"
+    case .original:
+        quality = "original"
+    }
+    let url = "https://image.tmdb.org/t/p/\(quality)/\(path)"
+    return URL(string: url)
 
 }

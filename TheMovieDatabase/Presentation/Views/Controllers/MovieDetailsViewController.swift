@@ -188,7 +188,7 @@ class MovieDetailsViewController: UIViewController {
             .store(in: &cancellables)
     }
     private func updateUI(with details: MovieDetails) {
-        if let url = URL(string: "https://image.tmdb.org/t/p/w500/"+(details.posterURL ?? "")) {
+        if let url = constructImageURL(path: details.posterURL ?? "", withQuality: .high) {
             posterImageView.kf.setImage(with: url)
         }
         titleLabel.text = details.title

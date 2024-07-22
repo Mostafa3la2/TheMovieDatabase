@@ -62,8 +62,9 @@ class MovieCollectionViewCell: UICollectionViewCell {
     }
 
     func configure(withMovie movie: MoviePresentationModel) {
-        let imageURL = URL(string: "https://image.tmdb.org/t/p/w300/"+(movie.posterPath ?? ""))
-        moviePosterImageView.kf.setImage(with: imageURL)
+        if let url = constructImageURL(path: movie.posterPath ?? "", withQuality: .medium) {
+            moviePosterImageView.kf.setImage(with: url)
+        }
         movieTitleLabel.text = movie.title
         subtitleLabel.text = movie.voteAverage != nil ? String(format: "%.2f", movie.voteAverage!) : "NA"
         if let averageRating = movie.voteAverage {
