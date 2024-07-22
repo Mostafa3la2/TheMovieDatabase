@@ -9,6 +9,7 @@ import Foundation
 
 protocol MoviesRepo {
     func fetchPopularMovies(parameters: [String: String]) async throws -> MovieListPage
+    func searchMovies(query: String, parameters: [String: String]?) async throws -> MovieListPage
 }
 class DefaultMoviesRepo: MoviesRepo {
 
@@ -19,6 +20,9 @@ class DefaultMoviesRepo: MoviesRepo {
     }
     func fetchPopularMovies(parameters: [String: String]) async throws -> MovieListPage {
         return try await remoteDataSource.fetchPopularMovies(parameters: parameters)
+    }
+    func searchMovies(query: String, parameters: [String: String]?) async throws -> MovieListPage {
+        return try await remoteDataSource.searchMovies(query: query, parameters: parameters)
     }
 }
 

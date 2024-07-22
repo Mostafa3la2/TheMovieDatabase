@@ -37,7 +37,7 @@ class PopularMoviesListViewController: UIViewController {
     }
     private func setupSearchBar() {
         searchBar.placeholder = "Search Movies"
-        // searchBar.delegate = self
+        searchBar.delegate = self
         view.addSubview(searchBar)
         searchBar.anchor(top: self.view.safeAreaLayoutGuide.topAnchor, left: self.view.leftAnchor, right: self.view.rightAnchor)
     }
@@ -87,7 +87,8 @@ class PopularMoviesListViewController: UIViewController {
         let moviesDataSource = DefaultRemoteDataSource(moviesAPI: moviesAPI)
         let moviesRepo = DefaultMoviesRepo(remoteDataSource: moviesDataSource)
         let moviesUsecase = DefaultFetchPopularMoviesUseCase(moviesRepo: moviesRepo)
-        moviesViewModel = PopularMoviesListViewModel(fetchMoviesUseCase: moviesUsecase)
+        let searchMoviesUsecase = DefaultSearchMoviesUseCase(moviesRepo: moviesRepo)
+        moviesViewModel = PopularMoviesListViewModel(fetchMoviesUseCase: moviesUsecase, searchMoviesUseCase: searchMoviesUsecase)
     }
     private func bindViewModel() {
         moviesViewModel.$movies
@@ -128,4 +129,20 @@ extension PopularMoviesListViewController: UICollectionViewDelegate {
             }
         }
     }
+}
+extension PopularMoviesListViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        Task {
+            if searchText.isEmpty {
+                await moviesViewModel.fetchPopularMovies(resetPage: true)
+            } else {
+                await moviesViewModel.searchMovies(firstSearch: true, with: searchText)
+            }
+        }
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+
 }

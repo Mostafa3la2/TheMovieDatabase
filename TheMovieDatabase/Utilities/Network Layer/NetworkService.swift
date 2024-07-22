@@ -18,6 +18,7 @@ class NetworkService {
         }
 
         var request = URLRequest(url: url)
+        print("request is \(request.url)")
         request.httpMethod = endpoint.method.rawValue
         request.allHTTPHeaderFields = [
           "accept": "application/json",

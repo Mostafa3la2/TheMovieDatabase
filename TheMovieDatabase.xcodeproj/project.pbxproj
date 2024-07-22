@@ -34,6 +34,7 @@
 		0DF581A32C4D472B000C65BF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0DF581A22C4D472B000C65BF /* Kingfisher */; };
 		0DF581A72C4D4849000C65BF /* PopularMoviesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF581A62C4D4849000C65BF /* PopularMoviesListViewModel.swift */; };
 		0DF581A92C4D5516000C65BF /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF581A82C4D5516000C65BF /* ImageService.swift */; };
+		0DF581AB2C4DE439000C65BF /* SearchMoviesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF581AA2C4DE439000C65BF /* SearchMoviesUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		0DF5819F2C4D44E7000C65BF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0DF581A62C4D4849000C65BF /* PopularMoviesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMoviesListViewModel.swift; sourceTree = "<group>"; };
 		0DF581A82C4D5516000C65BF /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
+		0DF581AA2C4DE439000C65BF /* SearchMoviesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMoviesUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				0DF581812C4C666C000C65BF /* FetchPopularMoviesUseCase.swift */,
+				0DF581AA2C4DE439000C65BF /* SearchMoviesUseCase.swift */,
 			);
 			path = "Use Cases";
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				0DF5819A2C4D3DE9000C65BF /* MoviePresentationModel.swift in Sources */,
 				0DF581412C4C25DE000C65BF /* AppDelegate.swift in Sources */,
 				0DF581862C4C6B1F000C65BF /* MoviesDTO.swift in Sources */,
+				0DF581AB2C4DE439000C65BF /* SearchMoviesUseCase.swift in Sources */,
 				0DF5818F2C4C71E6000C65BF /* Endpoint.swift in Sources */,
 				0DF581432C4C25DE000C65BF /* SceneDelegate.swift in Sources */,
 				0DF581962C4C7486000C65BF /* Constants.swift in Sources */,
