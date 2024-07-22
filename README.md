@@ -65,7 +65,11 @@ This project follows Clean Architecture principles to ensure a maintainable, tes
 - **Responsibilities**: Data retrieval from remote or local sources.
 - **Components**:
   - `Repositories`: `MovieRepository`, `MockMovieRepository`
+    
+### Dependency Injection
 
+There is a simple dependency injection solution impelemted that provides mocking each layer of the structure for testing
+    
 ## Error Handling
 
 - **Custom `ErrorPopupView`**: Displays error messages.
