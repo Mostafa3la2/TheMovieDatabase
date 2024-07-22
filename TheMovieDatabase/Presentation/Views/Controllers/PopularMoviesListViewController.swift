@@ -21,7 +21,7 @@ class PopularMoviesListViewController: UIViewController {
     private let pageLoader = UIActivityIndicatorView(style: .large)
     private let refreshIndicator = UIRefreshControl()
     private let searchBar = UISearchBar()
-
+    private let emptyStateLabel = UILabel()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -29,6 +29,7 @@ class PopularMoviesListViewController: UIViewController {
         setupMoviesCollectionView()
         setupDataSource()
         setupPageLoader()
+        setupEmptyLabel()
         bindViewModel()
         Task {
             await moviesViewModel.fetchPopularMovies()
@@ -49,6 +50,13 @@ class PopularMoviesListViewController: UIViewController {
         pageLoader.center(inView: view)
         pageLoader.hidesWhenStopped = true
         pageLoader.startAnimating()
+    }
+    private func setupEmptyLabel() {
+        view.addSubview(emptyStateLabel)
+        emptyStateLabel.text = "No Search Results Found"
+        emptyStateLabel.font = .systemFont(ofSize: 18, weight: .bold)
+        emptyStateLabel.center(inView: view)
+        emptyStateLabel.isHidden = true
     }
     private func setupMoviesCollectionView() {
         let layout = UICollectionViewCompositionalLayout{ (sectionIndex, layoutEnv) -> NSCollectionLayoutSection? in
@@ -117,6 +125,7 @@ class PopularMoviesListViewController: UIViewController {
                 }
                 self?.pageLoader.stopAnimating()
                 self?.applySnapshot(movies: movies)
+                self?.emptyStateLabel.isHidden = !movies.isEmpty
             }
             .store(in: &cancellables)
         moviesViewModel?.$isFetching
