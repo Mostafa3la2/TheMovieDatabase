@@ -79,4 +79,5 @@ There is a simple dependency injection solution impelemted that provides mocking
 - Enhance error handling and visual of popup
 - add more unit tests to cover testing pagination and search
 - add local caching for offline support
+- Add theming support for different grid layouts in list page, also light, dark, high contrast custom colors themes
 
