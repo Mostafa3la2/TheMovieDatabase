@@ -17,7 +17,7 @@ class PopularMoviesListViewModel {
     private var currentPage = 1
     @Published private(set) var isFetching: Bool = false
     private var canLoadMorePages = true
-    private var pageState: PageState = .normal
+    var pageState: PageState = .normal
     private var searchQuery: String?
     enum PageState {
         case search
