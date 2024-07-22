@@ -129,6 +129,12 @@ extension PopularMoviesListViewController: UICollectionViewDelegate {
             }
         }
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let movie = moviesViewModel.movies[indexPath.row]
+        let movieDetailsVC = MovieDetailsViewController()
+        movieDetailsVC.movieID = movie.id
+        self.navigationController?.pushViewController(movieDetailsVC, animated: true)
+    }
 }
 extension PopularMoviesListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

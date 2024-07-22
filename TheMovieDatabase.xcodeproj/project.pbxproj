@@ -35,6 +35,12 @@
 		0DF581A72C4D4849000C65BF /* PopularMoviesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF581A62C4D4849000C65BF /* PopularMoviesListViewModel.swift */; };
 		0DF581A92C4D5516000C65BF /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF581A82C4D5516000C65BF /* ImageService.swift */; };
 		0DF581AB2C4DE439000C65BF /* SearchMoviesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF581AA2C4DE439000C65BF /* SearchMoviesUseCase.swift */; };
+		0DF581AD2C4DEE7F000C65BF /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF581AC2C4DEE7F000C65BF /* MovieDetailsViewController.swift */; };
+		0DF581AF2C4DF11B000C65BF /* MovieDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF581AE2C4DF11B000C65BF /* MovieDetailsViewModel.swift */; };
+		0DF581B12C4DF168000C65BF /* FetchMovieDetailsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF581B02C4DF168000C65BF /* FetchMovieDetailsUseCase.swift */; };
+		0DF581B32C4DF82E000C65BF /* GenresCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF581B22C4DF82E000C65BF /* GenresCollectionViewCell.swift */; };
+		0DF581B52C4DFD6D000C65BF /* FetchMovieCastUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF581B42C4DFD6D000C65BF /* FetchMovieCastUseCase.swift */; };
+		0DF581B72C4E0164000C65BF /* CastMemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF581B62C4E0164000C65BF /* CastMemberCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +92,12 @@
 		0DF581A62C4D4849000C65BF /* PopularMoviesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMoviesListViewModel.swift; sourceTree = "<group>"; };
 		0DF581A82C4D5516000C65BF /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		0DF581AA2C4DE439000C65BF /* SearchMoviesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMoviesUseCase.swift; sourceTree = "<group>"; };
+		0DF581AC2C4DEE7F000C65BF /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
+		0DF581AE2C4DF11B000C65BF /* MovieDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewModel.swift; sourceTree = "<group>"; };
+		0DF581B02C4DF168000C65BF /* FetchMovieDetailsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMovieDetailsUseCase.swift; sourceTree = "<group>"; };
+		0DF581B22C4DF82E000C65BF /* GenresCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresCollectionViewCell.swift; sourceTree = "<group>"; };
+		0DF581B42C4DFD6D000C65BF /* FetchMovieCastUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMovieCastUseCase.swift; sourceTree = "<group>"; };
+		0DF581B62C4E0164000C65BF /* CastMemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastMemberCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +259,8 @@
 			children = (
 				0DF581812C4C666C000C65BF /* FetchPopularMoviesUseCase.swift */,
 				0DF581AA2C4DE439000C65BF /* SearchMoviesUseCase.swift */,
+				0DF581B02C4DF168000C65BF /* FetchMovieDetailsUseCase.swift */,
+				0DF581B42C4DFD6D000C65BF /* FetchMovieCastUseCase.swift */,
 			);
 			path = "Use Cases";
 			sourceTree = "<group>";
@@ -294,6 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				0DF581A62C4D4849000C65BF /* PopularMoviesListViewModel.swift */,
+				0DF581AE2C4DF11B000C65BF /* MovieDetailsViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -331,6 +346,8 @@
 			isa = PBXGroup;
 			children = (
 				0DF5819D2C4D4398000C65BF /* MovieCollectionViewCell.swift */,
+				0DF581B22C4DF82E000C65BF /* GenresCollectionViewCell.swift */,
+				0DF581B62C4E0164000C65BF /* CastMemberCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -339,6 +356,7 @@
 			isa = PBXGroup;
 			children = (
 				0DF5819B2C4D3E57000C65BF /* PopularMoviesListViewController.swift */,
+				0DF581AC2C4DEE7F000C65BF /* MovieDetailsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -480,14 +498,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DF581B72C4E0164000C65BF /* CastMemberCollectionViewCell.swift in Sources */,
 				0DF5819E2C4D4398000C65BF /* MovieCollectionViewCell.swift in Sources */,
 				0DF581A02C4D44E7000C65BF /* Extensions.swift in Sources */,
+				0DF581B12C4DF168000C65BF /* FetchMovieDetailsUseCase.swift in Sources */,
 				0DF581912C4C7238000C65BF /* NetworkService.swift in Sources */,
 				0DF5819C2C4D3E57000C65BF /* PopularMoviesListViewController.swift in Sources */,
 				0DF581982C4C77FC000C65BF /* MoviesRemoteDataSource.swift in Sources */,
 				0DF581452C4C25DE000C65BF /* ViewController.swift in Sources */,
+				0DF581AF2C4DF11B000C65BF /* MovieDetailsViewModel.swift in Sources */,
 				0DF5818B2C4C7103000C65BF /* NetworkError.swift in Sources */,
 				0DF5819A2C4D3DE9000C65BF /* MoviePresentationModel.swift in Sources */,
+				0DF581B52C4DFD6D000C65BF /* FetchMovieCastUseCase.swift in Sources */,
 				0DF581412C4C25DE000C65BF /* AppDelegate.swift in Sources */,
 				0DF581862C4C6B1F000C65BF /* MoviesDTO.swift in Sources */,
 				0DF581AB2C4DE439000C65BF /* SearchMoviesUseCase.swift in Sources */,
@@ -496,6 +518,8 @@
 				0DF581962C4C7486000C65BF /* Constants.swift in Sources */,
 				0DF581A92C4D5516000C65BF /* ImageService.swift in Sources */,
 				0DF5818D2C4C71C1000C65BF /* HTTPMethod.swift in Sources */,
+				0DF581B32C4DF82E000C65BF /* GenresCollectionViewCell.swift in Sources */,
+				0DF581AD2C4DEE7F000C65BF /* MovieDetailsViewController.swift in Sources */,
 				0DF581822C4C666C000C65BF /* FetchPopularMoviesUseCase.swift in Sources */,
 				0DF581842C4C6ADA000C65BF /* Movie.swift in Sources */,
 				0DF581882C4C6E74000C65BF /* MoviesRepo.swift in Sources */,

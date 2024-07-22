@@ -10,6 +10,9 @@ import Foundation
 protocol MoviesRemoteDataSource {
     func fetchPopularMovies(parameters: [String: String]) async throws -> MovieListPage
     func searchMovies(query: String, parameters: [String: String]?) async throws -> MovieListPage
+    func fetchMovieDetails(movieID: Int) async throws -> MovieDetails
+    func fetchMovieCast(movieID: Int) async throws -> [MovieCast]
+
 }
 
 class DefaultRemoteDataSource: MoviesRemoteDataSource {
@@ -24,5 +27,11 @@ class DefaultRemoteDataSource: MoviesRemoteDataSource {
     }
     func searchMovies(query: String, parameters: [String: String]?) async throws -> MovieListPage {
         return try await moviesAPI.searchMovies(query: query, parameters: parameters).toDomain()
+    }
+    func fetchMovieDetails(movieID: Int) async throws -> MovieDetails {
+        return try await moviesAPI.fetchMovieDetails(movieID: movieID).toDomain()
+    }
+    func fetchMovieCast(movieID: Int) async throws -> [MovieCast] {
+        return try await moviesAPI.fetchMovieCast(movieID: movieID).cast!.map{$0.toDomain()}
     }
 }

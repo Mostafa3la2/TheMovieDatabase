@@ -24,4 +24,14 @@ class MoviesAPI {
         let response: MovieListPageDTO = try await NetworkService.shared.request(endpoint: endpoint, responseType: MovieListPageDTO.self)
         return response
     }
+    func fetchMovieDetails(movieID: Int) async throws -> MovieDetailsDTO {
+        let endpoint = Endpoint(path: "/3/movie/\(movieID)")
+        let response: MovieDetailsDTO = try await NetworkService.shared.request(endpoint: endpoint, responseType: MovieDetailsDTO.self)
+        return response
+    }
+    func fetchMovieCast(movieID: Int) async throws -> MovieCastDTO {
+        let endpoint = Endpoint(path: "/3/movie/\(movieID)/credits")
+        let response: MovieCastDTO = try await NetworkService.shared.request(endpoint: endpoint, responseType: MovieCastDTO.self)
+        return response
+    }
 }

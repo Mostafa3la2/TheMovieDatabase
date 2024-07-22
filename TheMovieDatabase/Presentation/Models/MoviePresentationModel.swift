@@ -8,7 +8,7 @@
 import Foundation
 
 struct MoviePresentationModel: Hashable {
-    let id: UUID
+    let id: Int?
     let adult: Bool?
     let backdropPath: String?
     let genreIDS: [Int]?
@@ -34,6 +34,25 @@ struct MoviePresentationModel: Hashable {
         self.video = movie.video
         self.voteAverage = movie.voteAverage
         self.voteCount = movie.voteCount
-        self.id = UUID()
+        self.id = movie.id
     }
+}
+struct MovieDetailsPresentationModel: Hashable {
+    let id: Int?
+    let title: String?
+    let posterURL: URL?
+    let overView: String?
+    let rating: Double?
+    let genres: [Genre]
+}
+struct Genre: Hashable {
+    let id: Int?
+    let name: String
+}
+
+struct CastMember: Hashable {
+    let id: Int?
+    let name: String?
+    let character: String?
+    let profileURL: String?
 }

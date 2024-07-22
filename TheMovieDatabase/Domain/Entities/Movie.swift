@@ -26,3 +26,20 @@ struct Movie {
     let voteAverage: Double?
     let voteCount: Int?
 }
+struct MovieDetails {
+    let id: Int?
+    let title: String?
+    let posterURL: String?
+    let overView: String?
+    let rating: Double?
+    let genres: [Genre]?
+    let releaseDate: String?
+    let revenue: Int?
+    let runTime: Int?
+}
+struct MovieCast {
+    let id: Int?
+    let name: String?
+    let character: String?
+    let profilePath: String?
+}
