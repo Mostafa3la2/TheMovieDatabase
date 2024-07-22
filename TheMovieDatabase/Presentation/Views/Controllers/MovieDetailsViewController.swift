@@ -49,8 +49,14 @@ class MovieDetailsViewController: UIViewController {
     private func configureScrollView() {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
-        scrollView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
-        contentView.anchor(top: scrollView.topAnchor, left: scrollView.leftAnchor, bottom: scrollView.bottomAnchor, right: scrollView.rightAnchor)
+        scrollView.anchor(top: view.topAnchor, 
+                          left: view.leftAnchor,
+                          bottom: view.bottomAnchor,
+                          right: view.rightAnchor)
+        contentView.anchor(top: scrollView.topAnchor, 
+                           left: scrollView.leftAnchor,
+                           bottom: scrollView.bottomAnchor,
+                           right: scrollView.rightAnchor)
         NSLayoutConstraint.activate([
         contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
@@ -59,25 +65,43 @@ class MovieDetailsViewController: UIViewController {
         contentView.addSubview(posterImageView)
         posterImageView.contentMode = .scaleAspectFit
         posterImageView.clipsToBounds = true
-        posterImageView.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, height: 300)
+        posterImageView.anchor(top: contentView.topAnchor, 
+                               left: contentView.leftAnchor,
+                               right: contentView.rightAnchor,
+                               height: 300)
     }
     private func configureTitleLabel() {
          titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
         contentView.addSubview(titleLabel)
-        titleLabel.anchor(top: posterImageView.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 16, paddingLeft: 16, paddingRight: 16)
+        titleLabel.anchor(top: posterImageView.bottomAnchor, 
+                          left: contentView.leftAnchor, 
+                          right: contentView.rightAnchor,
+                          paddingTop: 16,
+                          paddingLeft: 16,
+                          paddingRight: 16)
      }
 
      private func configureOverviewLabel() {
          overviewLabel.numberOfLines = 0
          contentView.addSubview(overviewLabel)
 
-         overviewLabel.anchor(top: titleLabel.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 8, paddingLeft: 16, paddingRight: 16)
+         overviewLabel.anchor(top: titleLabel.bottomAnchor, 
+                              left: contentView.leftAnchor,
+                              right: contentView.rightAnchor,
+                              paddingTop: 8,
+                              paddingLeft: 16,
+                              paddingRight: 16)
      }
 
      private func configureRatingLabel() {
          ratingLabel.font = UIFont.systemFont(ofSize: 18)
          contentView.addSubview(ratingLabel)
-         ratingLabel.anchor(top: overviewLabel.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 24, paddingLeft: 16, paddingRight: 16)
+         ratingLabel.anchor(top: overviewLabel.bottomAnchor, 
+                            left: contentView.leftAnchor,
+                            right: contentView.rightAnchor,
+                            paddingTop: 24,
+                            paddingLeft: 16,
+                            paddingRight: 16)
      }
     private func configureGenresCollectionView() {
         let layout = createHorizontalLayout()
@@ -86,7 +110,13 @@ class MovieDetailsViewController: UIViewController {
         genresCollectionView.backgroundColor = .white
         contentView.addSubview(genresCollectionView)
 
-        genresCollectionView.anchor(top: ratingLabel.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 16, paddingLeft: 16, paddingRight: 16, height: 50)
+        genresCollectionView.anchor(top: ratingLabel.bottomAnchor, 
+                                    left: contentView.leftAnchor,
+                                    right: contentView.rightAnchor,
+                                    paddingTop: 16,
+                                    paddingLeft: 16,
+                                    paddingRight: 16,
+                                    height: 50)
         genresDataSource = UICollectionViewDiffableDataSource<Int, Genre>(collectionView: genresCollectionView) { (collectionView, indexPath, genre) -> UICollectionViewCell? in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GenresCollectionViewCell.reuseIdentifier, for: indexPath) as! GenresCollectionViewCell
             cell.configure(with: genre)
@@ -101,7 +131,15 @@ class MovieDetailsViewController: UIViewController {
         castCollectionView.backgroundColor = .white
         contentView.addSubview(castCollectionView)
 
-        castCollectionView.anchor(top: genresCollectionView.bottomAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor, paddingTop: 16, paddingLeft: 16, paddingBottom: 16, paddingRight: 16, height: 150)
+        castCollectionView.anchor(top: genresCollectionView.bottomAnchor, 
+                                  left: contentView.leftAnchor,
+                                  bottom: contentView.bottomAnchor,
+                                  right: contentView.rightAnchor,
+                                  paddingTop: 16,
+                                  paddingLeft: 16,
+                                  paddingBottom: 16,
+                                  paddingRight: 16,
+                                  height: 150)
         castDataSource = UICollectionViewDiffableDataSource<Int, CastMember>(collectionView: castCollectionView) { (collectionView, indexPath, castMember) -> UICollectionViewCell? in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CastMemberCollectionViewCell.reuseIdentifier, for: indexPath) as! CastMemberCollectionViewCell
             cell.configure(with: castMember)

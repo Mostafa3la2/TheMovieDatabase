@@ -26,7 +26,12 @@ class MovieCollectionViewCell: UICollectionViewCell {
 
     private func setupViews() {
         addSubview(moviePosterImageView)
-        moviePosterImageView.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 8, paddingLeft: 8, paddingRight: 8)
+        moviePosterImageView.anchor(top: topAnchor, 
+                                    left: leftAnchor,
+                                    right: rightAnchor,
+                                    paddingTop: 8,
+                                    paddingLeft: 8,
+                                    paddingRight: 8)
         moviePosterImageView.layer.cornerRadius = 12
         moviePosterImageView.clipsToBounds = true
         moviePosterImageView.contentMode = .scaleAspectFill
@@ -41,7 +46,14 @@ class MovieCollectionViewCell: UICollectionViewCell {
 
         addSubview(labelsStackView)
         labelsStackView.centerX(inView: self)
-        labelsStackView.anchor(top: moviePosterImageView.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 8, paddingLeft: 4, paddingBottom: 8, paddingRight: 4)
+        labelsStackView.anchor(top: moviePosterImageView.bottomAnchor, 
+                               left: leftAnchor,
+                               bottom: bottomAnchor,
+                               right: rightAnchor,
+                               paddingTop: 8,
+                               paddingLeft: 4,
+                               paddingBottom: 8,
+                               paddingRight: 4)
 
         movieTitleLabel.font = .boldSystemFont(ofSize: 18)
         subtitleLabel.font = .systemFont(ofSize: 14, weight: .medium)

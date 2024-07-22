@@ -39,7 +39,9 @@ class PopularMoviesListViewController: UIViewController {
         searchBar.placeholder = "Search Movies"
         searchBar.delegate = self
         view.addSubview(searchBar)
-        searchBar.anchor(top: self.view.safeAreaLayoutGuide.topAnchor, left: self.view.leftAnchor, right: self.view.rightAnchor)
+        searchBar.anchor(top: self.view.safeAreaLayoutGuide.topAnchor, 
+                         left: self.view.leftAnchor,
+                         right: self.view.rightAnchor)
     }
     private func setupMoviesCollectionView() {
         let layout = UICollectionViewCompositionalLayout{ (sectionIndex, layoutEnv) -> NSCollectionLayoutSection? in
@@ -49,7 +51,10 @@ class PopularMoviesListViewController: UIViewController {
         moviesCollectionView.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: MovieCollectionViewCell.reuseIdentified)
         moviesCollectionView.backgroundColor = .white
         view.addSubview(moviesCollectionView)
-        moviesCollectionView.anchor(top: searchBar.bottomAnchor, left: self.view.leftAnchor, bottom: self.view.bottomAnchor, right: self.view.rightAnchor)
+        moviesCollectionView.anchor(top: searchBar.bottomAnchor, 
+                                    left: self.view.leftAnchor,
+                                    bottom: self.view.bottomAnchor,
+                                    right: self.view.rightAnchor)
         refreshIndicator.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
         moviesCollectionView.refreshControl = refreshIndicator
         moviesCollectionView.delegate = self
